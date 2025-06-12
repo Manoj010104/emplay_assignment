@@ -35,7 +35,7 @@ The chatbot follows a standard RAG pipeline:
 5.  **LLM Generation:** The user query and the context block are sent to the Groq API. The LLM (e.g., Llama 3) generates a structured, safety-aware response based on the provided information.
 6.  **Final Response:** The formatted answer, including the disclaimer and source citations, is returned to the user.
 
-![System Architecture Diagram](architecture.png)
+![System Architecture Diagram](system_architecture.png)
 
 
 ---
