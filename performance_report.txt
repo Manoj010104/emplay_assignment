@@ -1,0 +1,41 @@
+# Performance Report: RAG-Powered First-Aid Chatbot
+
+**Candidate:** Chirraboyina Manoj
+**Date:** 12-06-2025
+**Project:** RAG-Powered First-Aid Chatbot (Groq & Google CSE Edition)
+
+### 1. Introduction
+
+This report details the performance of the RAG-Powered First-Aid Chatbot, a system designed to provide fast, reliable, and safety-aware AI assistance for educational first-aid guidance. Performance was evaluated using a suite of 10 automated tests covering scenarios in Diabetes, Cardiac, and Renal health. The key metrics analyzed are latency, API token usage, and response accuracy.
+
+### 2. Performance Metrics
+
+The metrics below were captured directly from the application's built-in `MetricsTracker` during a full run of the `pytest` test suite.
+
+#### **Average Latency**
+
+*   **Average End-to-End Latency:** **4.64 seconds** per query.
+
+This measurement represents the complete lifecycle of a user request: local FAISS retrieval, a live network call to the Google Search API, a compute-intensive cross-encoder re-ranking step, and the final generation from the Groq API. This speed ensures a responsive and effective user experience.
+
+#### **Token Usage**
+
+*   **Average Total Tokens per Query:** **~1,056 tokens** (Calculated from a total of 10,561 tokens over 10 queries).
+
+This highly efficient token count demonstrates a well-balanced prompt that provides sufficient context for factual accuracy without unnecessary verbosity. This usage level is well within the generous free tier limits of the Groq API, making the solution cost-effective.
+
+### 3. Accuracy & Reliability Summary
+
+The automated test suite, which **passed with 10/10 successful runs**, confirmed the system's high reliability and accuracy. A qualitative review of the generated responses for each test case revealed:
+
+*   **Exceptional Safety Compliance:** In all life-threatening scenarios (e.g., suspected heart attack, severe hypoglycemia), the chatbot's primary and first instruction was to **"Call emergency services immediately."** The mandatory safety disclaimer was correctly prepended to every response.
+*   **High Diagnostic Accuracy:** The chatbot correctly inferred the likely medical condition in all 10 test cases, including nuanced situations like distinguishing between different types of hyperglycemic emergencies.
+*   **Correct First-Aid Guidance:** The recommended actions were appropriate, safe, and directly supported by the provided source citations (e.g., advising aspirin for chest pain, glucagon for unconsciousness, hydration for AKI).
+*   **Robust Citation Mechanism:** The RAG pipeline proved effective, with every response citing the specific local and web sources used for generation, ensuring transparency and verifiability.
+
+### 4. Known Limitations
+
+1.  **API Dependency:** System functionality is entirely dependent on the availability of external APIs (Groq, Google) and a stable internet connection.
+2.  **Narrow Corpus Scope:** The bot's deep expertise is limited by the curated local corpus. Expanding its knowledge to other medical domains would require adding more verified data.
+3.  **Hallucination Risk:** While RAG significantly mitigates this, an LLM can still misinterpret complex context. The strict system prompt and source citations are in place to minimize this risk.
+4.  **Not a Medical Device:** The most critical limitation is that this is an educational tool, not a substitute for advice from a qualified healthcare professional. This is addressed by the prominent and mandatory disclaimer.

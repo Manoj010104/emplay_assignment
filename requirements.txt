@@ -1,0 +1,7 @@
+# requirements.txt
+python-dotenv
+requests
+faiss-cpu
+sentence-transformers
+google-api-python-client
+groq # New for Groq API
