@@ -36,7 +36,7 @@ The chatbot follows a standard RAG pipeline:
 6.  **Final Response:** The formatted answer, including the disclaimer and source citations, is returned to the user.
 
 ![System Architecture Diagram](architecture.png)
-*(Note: You need to create and add the `architecture.png` file to the repository.)*
+
 
 ---
 
